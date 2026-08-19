@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>blog.api</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <header class="tabbar">
+    <div class="tab">
+      <span class="tab-dot" aria-hidden="true"></span>
+      <span class="tab-name">blog.api</span><span class="cursor" aria-hidden="true">_</span>
+    </div>
+    <div class="auth-slot" id="auth-slot">
+      <button class="btn btn-ghost" id="btn-open-auth">sign in</button>
+    </div>
+  </header>
+
+  <div id="banner-region" class="banner-region" role="status" aria-live="polite"></div>
+
+  <main class="wrap">
+
+    <div class="pathline">
+      <span class="path">~/blogs</span>
+      <div class="search-box">
+        <span class="search-slash">/</span>
+        <input type="text" id="search-input" placeholder="search titles" autocomplete="off">
+      </div>
+    </div>
+
+    <section class="composer" id="composer" hidden>
+      <div class="comment-open">/**</div>
+      <form id="composer-form">
+        <div class="field-row">
+          <label for="post-title">@title</label>
+          <input type="text" id="post-title" required maxlength="255" placeholder="a headline for this entry">
+        </div>
+        <textarea id="post-content" required placeholder="write the entry..." rows="4"></textarea>
+        <div class="composer-actions">
+          <span class="field-error" id="composer-error"></span>
+          <button type="submit" class="btn btn-accent" id="composer-submit">publish</button>
+        </div>
+      </form>
+      <div class="comment-close">*/</div>
+    </section>
+
+    <section class="locked-hint" id="locked-hint">
+      <span>sign in to write an entry</span>
+    </section>
+
+    <section class="feed" id="feed" aria-live="polite"></section>
+
+    <div class="empty-state" id="empty-state" hidden>
+      <p class="empty-title">// no entries yet</p>
+      <p class="empty-body">Write your first one above.</p>
+    </div>
+
+    <nav class="pager" id="pager" hidden>
+      <button class="btn btn-ghost" id="pager-prev">‹ prev</button>
+      <span class="pager-label" id="pager-label">page 1</span>
+      <button class="btn btn-ghost" id="pager-next">next ›</button>
+    </nav>
+
+  </main>
+
+  <div class="modal-backdrop" id="auth-backdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="auth-heading">
+      <div class="modal-tabs">
+        <button class="modal-tab active" id="tab-signin" type="button">sign in</button>
+        <button class="modal-tab" id="tab-register" type="button">create account</button>
+      </div>
+      <h2 id="auth-heading" class="sr-only">Account access</h2>
+
+      <form id="signin-form" class="auth-form">
+        <label for="signin-username">username</label>
+        <input type="text" id="signin-username" autocomplete="username" required>
+        <label for="signin-password">password</label>
+        <input type="password" id="signin-password" autocomplete="current-password" required>
+        <span class="field-error" id="signin-error"></span>
+        <button type="submit" class="btn btn-accent btn-block">sign in</button>
+      </form>
+
+      <form id="register-form" class="auth-form" hidden>
+        <label for="register-username">username</label>
+        <input type="text" id="register-username" autocomplete="username" required minlength="3">
+        <label for="register-password">password</label>
+        <input type="password" id="register-password" autocomplete="new-password" required minlength="6">
+        <span class="field-error" id="register-error"></span>
+        <button type="submit" class="btn btn-accent btn-block">create account</button>
+      </form>
+
+      <button class="modal-close" id="modal-close" type="button" aria-label="Close">×</button>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -116,7 +116,19 @@ function signOut() {
   renderAuthSlot();
   loadBlogs();
 }
+// ---- auth tabs ----
+function switchAuthTab(mode) {
+  const isSignin = mode === 'signin';
 
+  el.tabSignin.classList.toggle('active', isSignin);
+  el.tabRegister.classList.toggle('active', !isSignin);
+
+  el.signinForm.hidden = !isSignin;
+  el.registerForm.hidden = isSignin;
+
+  el.signinError.textContent = '';
+  el.registerError.textContent = '';
+}
 function openAuthModal(mode) {
   el.authBackdrop.hidden = false;
   switchAuthTab(mode);

@@ -143,6 +143,14 @@ function openAuthModal(mode) {
   (mode === 'signin' ? document.getElementById('signin-username') : document.getElementById('register-username')).focus();
 }
 
+function switchAuthTab(mode) {
+  const isSignin = mode === 'signin';
+  el.tabSignin.classList.toggle('active', isSignin);
+  el.tabRegister.classList.toggle('active', !isSignin);
+  el.signinForm.hidden = !isSignin;
+  el.registerForm.hidden = isSignin;
+}
+
 function closeAuthModal() {
   el.authBackdrop.hidden = true;
   el.authBackdrop.style.display = 'none';

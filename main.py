@@ -8,7 +8,7 @@ from fastapi.responses import FileResponse
 from oauth2 import create_token,verify_token,hash_password,verify_password
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
-@app.get("/app")
+@app.get("/")
 def serve_frontend():
     return FileResponse("static/index.html")
 models.base.metadata.create_all(bind=engine)
